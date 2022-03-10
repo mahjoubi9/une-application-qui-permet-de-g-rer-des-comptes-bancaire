@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout">
+<head>
+<meta charset="utf-8">
+<title> new Employee  </title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<style>
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.m {
+margin-left: 110ex;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+}
+
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #04AA6D;
+  color: white;
+}
+</style>
+</head>
+<body style="background-image: url('/d1.PNG')">
+  <header>
+<div class="topnav">
+  <a  th:href="@{/}">Home</a>
+  <a th:href="@{/clients}">Clients</a>
+  <a class="active" th:href="@{/employes}">Employes</a>
+    <a th:href="@{/operations}">Operations</a>
+      <a th:href="@{/group}">Groupes</a>
+   <a th:href="@{/compte}">Comptes</a>
+     <a class="m" th:href="@{/login}">logout</a>
+   
+</div>
+</header>
+<div layout:fragment="content">
+	<div class="container">
+		<hr>
+		<h2> affecté à un groupe </h2>
+
+   
+
+		<form th:action="@{saveafectation(nomEmploye=${nomEmploye},nomGroupe1=${nomGroupe1},nomGroupe2=${nomGroupe2},CodeEmploye=${employe.getCodeEmploye()})}" method="Get">
+		<label >Employee name </label>
+			<input type="text" 
+				placeholder="Employee name "  name="nomEmploye" th:value="${employe.getNomEmploye()}"  class="form-control mb-4 col-4">
+							<label >Employee ID </label>
+							<input type="text" 
+				placeholder="Employee ID "  name="CodeEmploye" th:value="${employe.getCodeEmploye()}"  class="form-control mb-4 col-4">
+				
+				<input type="text" 
+				placeholder="entre le nom de groupe" name="nomGroupe1" th:value="${nomGroupe1}" class="form-control mb-4 col-4">
+				<input type="text" 
+				placeholder="entre le nom de groupe" name="nomGroupe2" th:value="${nomGroupe2}" class="form-control mb-4 col-4">
+				<button type="submit" class="btn btn-info col-2"> Save Employee</button>
+		</form>
+<!--
+<form th:action="@{employe(nomEmploye=${nomEmploye},
+employeSup=${employeSup})}" method="">
+					<div class="mb-3">
+						<label classs="control-label">nomEmploye</label>
+						<input type="text" name="nomEmploye" th:value="${nomEmploye}" class="p-1" />
+						
+						<label classs="control-label">employeSup</label>
+						<input type="text" name="employeSup" th:value="${employeSup}" class="p-1" />
+						
+						
+						<button class="btn btn-primary">Ajouter</button>
+					</div>
+				</form>-->
+		
+		<hr>
+		
+		<a th:href = "@{/employes}"> Back to Employee List</a>
+	</div>
+	</div>
+<footer>
+	   <button   class="btn"><i class="fa fa-home"></i>
+             <a th:href = "@{/}">home</a>     
+       </button>
+	</footer></body>
+</html>

@@ -1,0 +1,112 @@
+  <!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout">
+<head>
+<meta charset="utf-8">
+<title> new Employee  </title>
+    <link rel="stylesheet"href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<style>
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+}
+
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+.m {
+margin-left: 110ex;
+}
+.topnav a.active {
+  background-color: #04AA6D;
+  color: white;
+}
+</style>
+</head>
+ <body style="background-image: url('/d1.PNG')">
+   <header>
+ <div class="topnav">
+  <a  th:href="@{/}">Home</a>
+  <a th:href="@{/clients}">Clients</a>
+  <a th:href="@{/employes}">Employes</a>
+    <a th:href="@{/operations}">Operations</a>
+      <a class="active"  th:href="@{/group}">Groupes</a>
+   <a th:href="@{/compte}">Comptes</a>
+   <a  th:href="@{/login}">logout</a>
+   
+</div>
+</header>
+<div layout:fragment="content">
+	<div class="container">
+		 <h2>Save group</h2>
+
+	<!--	<form  th:action="@{savegroupe(nomGroupe=${nomGroupe})}"method="post">
+			 <input type="text" placeholder="nom du groupe" name="nomGroupe"  class="form-control mb-4 col-4">
+			
+				<button type="submit" class="btn btn-info col-2"> Save </button>
+		</form>
+
+		
+		<a th:href = "@{/group}"> Back to Employee List</a>
+	 </div>
+	</div>
+  <footer>
+	   <button   class="btn"><i class="fa fa-home"></i>
+             <a th:href = "@{/}">home</a>     
+       </button>
+	</footer>
+ </body>
+</html>
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta charset="utf-8">
+<title> new Employee  </title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	
+</head>
+<body style="background-image: url('/d1.PNG')">
+<div layout:fragment="content">
+	<div class="container">
+		<hr>
+		<h2>Save group</h2>
+
+<!-- th:field="*{firstName}"   -->
+
+		<form  th:action="@{savegroupe}" method="post">
+			<input type="text" placeholder="nom du groupe" name="nomGroupe"   class="form-control mb-4 col-4">
+				<button type="submit" class="btn btn-info col-2"> Save </button>
+		</form>
+
+		<hr>
+		
+		<a th:href = "@{/group}"> Back to Employee List</a>
+	</div>
+	</div>
+<footer>
+	   <button   class="btn"><i class="fa fa-home"></i>
+             <a th:href = "@{/}">home</a>     
+       </button>
+	</footer>
+	</body>
+</html>

@@ -1,0 +1,122 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout">
+<link rel="stylesheet"href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"crossorigin="anonymous">
+<head>
+<meta charset="ISO-8859-1">
+<title> new client  </title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<style>
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.m {
+margin-left: 110ex;
+}
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+}
+
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #04AA6D;
+  color: white;
+}
+</style>
+</head>
+   <body style="background-image: url('/d1.PNG')">
+     <header>
+<div class="topnav">
+  <a  th:href="@{/}">Home</a>
+  <a class="active"  th:href="@{/clients}">Clients</a>
+  <a th:href="@{/employes}">Employes</a>
+    <a th:href="@{/operations}">Operations</a>
+      <a th:href="@{/group}">Groupes</a>
+   <a th:href="@{/compte}">Comptes</a>
+        <a  th:href="@{/login}">logout</a>
+   
+</div>
+</header>
+    <div layout:fragment="content">
+
+	<div class="container">
+		<hr>
+		<h2>Save client</h2>
+
+
+		<form th:action="@{saveclient}" 
+			method="GET"  >
+			<input type="text" 
+				placeholder="client name " th:value="${client.nomClient}" name="nomClient" class="form-control mb-4 col-4">
+				<input type="text" 
+				placeholder="le code le compte" th:value="${codeCompte}" name="codeCompte" class="form-control mb-4 col-4">
+				
+				
+				<button type="submit" class="btn btn-info col-2"> Save client</button>
+		</form>
+
+
+<!-- 
+<form th:action="@{saveclient(nomClient=${nomClient})}" 
+			method="post">
+			<input type="text" 
+				placeholder="Employee  Name"  name="nomClient" th:value="${nomClient}" class="form-control mb-4 col-4">
+				
+				
+				
+				<button type="submit"   class="btn btn-info col-2"> Save client</button>
+		</form>-->
+
+
+
+		
+		<hr>
+		
+		<a th:href = "@{/clients}"> Back to Clients List</a>
+	</div>
+	</div>
+<footer>
+	   <button   class="btn"><i class="fa fa-home"></i>
+             <a th:href = "@{/}">home</a>     
+       </button>
+	</footer>	
+</body>
+</html>
+
+<!--
+<form  th:action="${saveclient}" method="">
+			<input type="text" placeholder="nom du groupe" name="nomClient"  class="form-control mb-4 col-4">
+				<button type="submit" class="btn btn-info col-2"> Save </button>
+		</form>
+
+		<hr>
+		
+		<a th:href = "@{/clients}"> Back to Employee List</a>
+	</div>
+	</div>
+<footer>
+	   <button   class="btn"><i class="fa fa-home"></i>
+             <a th:href = "@{/}">home</a>     
+       </button>
+	</footer>
+	</body>
+</html>-->

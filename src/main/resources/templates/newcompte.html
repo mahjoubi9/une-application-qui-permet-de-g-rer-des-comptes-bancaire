@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout">
+<head>
+<meta charset="utf-8">
+<title> new compte  </title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<style>
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.m {
+margin-left: 110ex;
+}
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+}
+
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #04AA6D;
+  color: white;
+}
+</style>
+	
+	<script>
+function myFunction() {
+  var x = document.getElementById("mySelect").value;
+  if( x== 'CC'){
+  document.getElementById('c1').style.display='block';
+  document.getElementById('c2').style.display='none';
+
+  } else {
+		  document.getElementById('c1').style.display='none';
+		  document.getElementById('c2').style.display='block';
+
+  }
+ 
+}
+</script>
+	
+</head>
+<body style="background-image: url('/d1.PNG')">
+  <header>
+<div class="topnav">
+  <a  th:href="@{/}">Home</a>
+  <a th:href="@{/clients}">Clients</a>
+  <a th:href="@{/employes}">Employes</a>
+    <a th:href="@{/operations}">Operations</a>
+      <a th:href="@{/group}">Groupes</a>
+   <a class="active" th:href="@{/compte}">Comptes</a>
+   <a  th:href="@{/login}">logout</a>
+   
+</div>
+</header>
+<div layout:fragment="content">
+	<div class="container">
+		<hr>
+		<h2>Save compte</h2>
+
+<!-- th:field="*{firstName}"   -->
+
+
+
+
+
+		<form th:action="@{createcompte(codeCompte=${codeCompte}, type=${type},decouvert=${decouvert},taux=${taux},codeClient=${codeClient},nomEmploye=${nomEmploye})}" method="Get">
+				<div>
+				<select name="type" id="mySelect" onchange="myFunction()" aria-label=".form-select-lg example" class="form-select form-select-lg mb-3" >
+                   <option  selected value="CC">SELECTIONNER LE TYPE DU COMPTE</option>
+                    <option    value="CC">Compte courant</option>
+                    <option   value="CE">Compte epargne</option>
+              </select>
+              </div>
+              <div>
+			<input type="text" placeholder="compte code " th:value="${codeCompte}"  name="codeCompte"  class="form-control mb-4 col-4">	
+			
+				
+			<div id="c1" >	<input type="text" placeholder="decouvert :"  name="decouvert" th:value="${decouvert}"  class="form-control mb-4 col-4"></div>
+				
+				<input type="text" 
+				placeholder="solde"  name="solde"   class="form-control mb-4 col-4">
+				<input type="text" placeholder="codeClient" th:value="${codeClient}"  name="codeClient"   class="form-control mb-4 col-4">
+				<input type="text" placeholder="nom de Employe" th:value="${nomEmploye}"  name="nomEmploye"   class="form-control mb-4 col-4">
+				<div id="c2" ><input type="text" placeholder="taux :"  name="taux" th:value="${taux}"  class="form-control mb-4 col-4"></div>
+				</div>
+				
+				<button type="submit" class="btn btn-info col-2"> Save compte</button>
+		</form>
+
+
+
+		<hr>
+		
+		<a th:href = "@{/compte}"> Back to compte List</a>
+	</div>
+	</div>
+<footer>
+	   <button   class="btn"><i class="fa fa-home"></i>
+             <a th:href = "@{/}">home</a>     
+       </button>
+	</footer>
+	</body>
+</html>

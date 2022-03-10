@@ -1,0 +1,130 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout">
+
+    <link rel="stylesheet"href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<style>
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.m {
+margin-left: 110ex;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+}
+
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #04AA6D;
+  color: white;
+}
+</style>
+  <head>
+  </head>
+  <body style="background-image: url('/d1.PNG')" >
+    <header>
+<div class="topnav">
+  <a th:href="@{/}">Home</a>
+  <a th:href="@{/clients}">Clients</a>
+  <a th:href="@{/employes}">Employes</a>
+    <a th:href="@{/operations}">Operations</a>
+      <a th:href="@{/group}">Groupes</a>
+   <a  class="active" th:href="@{/compte}">Comptes</a>
+   <a  th:href="@{/login}">logout</a>
+   
+</div>
+</header>
+  	<div class="container" layout:fragment="content">
+   </br>
+    </br>
+     	<a th:href = "@{/newcompte}" class="btn btn-info btn-sm mb-3"> Add new compte </a>
+     
+    </br>
+     </br>
+   
+  
+  <form  th:action="@{/consulter}" 
+			method="get">
+			
+				<label><h2>Consulter le compte</h2></label>
+				<input   th:value="${codeCompte}" type="text" 
+				placeholder=" Entrer le code  du compte"  name="codeCompte" class="form-control mb-4 col-4">	
+			<button type="submit" class="btn btn-dark col-2"> chercher</button>
+		</form>
+  
+  
+  </br>
+    </br>
+    </br>
+  
+ <!-- 
+ 
+ v-->
+  
+  <div class="container my-2" th:if="${compte}">	
+		<table border="1" class = "table table-striped table-responsive-md">
+			<thead>
+				<tr>
+					<h2>Informations sur le compte  </h2>
+				</tr>
+			</thead>
+			<tbody>
+			<tr th:if="${compte.client}">
+					<td >client</td>
+					<td th:text="${compte.client.nomClient}" ></td>
+				</tr>
+			<tr>
+					<td >code</td>
+					<td th:text="${compte.codeCompte}" ></td>
+				</tr>
+			<tr>
+					<td >Solde</td>
+					<td th:text="${compte.solde}"  ></td>
+				<tr>
+					<td >Date </td>
+					<td th:text="${compte.dateCreation}"></td>
+				</tr>
+				<tr>
+					<td >Type</td>
+					<td th:text="${compte.class.simpleName}" ></td>
+				</tr>
+				<tr  th:if="${compte.class.simpleName=='CompteCourant'}">
+					<td>decouvert</td>
+					<td th:text="${compte.decouvert}" ></td>
+				</tr>
+				<tr th:if="${compte.class.simpleName=='CompteEpargne'}">
+					<td >Taux</td>
+					<td th:text="${compte.taux}" ></td>
+				</tr>
+				<tr>
+					
+			</tbody>
+		</table>
+	</div>
+	</div>
+	<footer>
+	   <button   class="btn"><i class="fa fa-home"></i>
+             <a th:href = "@{/}">home</a>     
+       </button>
+	</footer>
+  </body>
+  </html>
